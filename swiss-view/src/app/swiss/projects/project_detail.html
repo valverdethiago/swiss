@@ -2,8 +2,8 @@
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>
-        	<span ng-show="util.isUndefinedOrNull(controller.entity.id)"> {{ 'CRUDS.PROJECTS.DIALOG.TITLE.INSERT' | translate }} </span>
-        	<span ng-show="!util.isUndefinedOrNull(controller.entity.id)"> {{ 'CRUDS.PROJECTS.DIALOG.TITLE.UPDATE' | translate }} </span>
+        	<span ng-show="util.isUndefinedOrNull(controller.entity.id)"> New Project </span>
+        	<span ng-show="!util.isUndefinedOrNull(controller.entity.id)"> Edit Project </span>
         </h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="controller.closeDialog()">
@@ -12,61 +12,61 @@
       </div>
     </md-toolbar>
     <md-dialog-content>
-		<div class="md-dialog-content">		
+		<div class="md-dialog-content">
 			<form name="projectForm" novalidate >
 		      	<md-input-container  class="md-block">
-		       		<label translate>CRUDS.PROJECTS.LABELS.FIELDS.TITLE</label>
+		       		<label>Title</label>
 		       		<input ng-model="controller.entity.title" name="title" md-maxlength="30" required />
 	                <div ng-messages="projectForm.title.$error">
 	                    <div ng-message when="required">
-	                        <span translate>CRUDS.PROJECTS.MESSAGES.VALIDATION.TITLE</span>
+	                        <span>Please inform a valid title for the project"</span>
 	                    </div>
 	                </div>
 		      	</md-input-container>
 		       	<md-input-container class="md-block">
-		       		<label translate>CRUDS.PROJECTS.LABELS.FIELDS.SUMMARY</label>
+		       		<label translate>Summary</label>
 		       		<textarea ng-model="controller.entity.summary" name="summary" md-maxlength="150" rows="5" md-select-on-focus  required ></textarea>
 	                <div ng-messages="projectForm.summary.$error">
 	                    <div ng-message when="required">
-	                        <span translate>CRUDS.PROJECTS.MESSAGES.VALIDATION.SUMMARY</span>
+	                        <span translate>Please inform a valid summary for the project</span>
 	                    </div>
 	                </div>
 		      	</md-input-container>
 		  		<md-input-container class="md-block">
-		        	<label translate>CRUDS.PROJECTS.LABELS.FIELDS.DESCRIPTION</label>
+		        	<label translate>Description</label>
 		        	<textarea ng-model="controller.entity.description" name="description" md-maxlength="300" rows="10" md-select-on-focus  required></textarea>
 	                <div ng-messages="projectForm.description.$error">
 	                    <div ng-message when="required">
-	                        <span translate>CRUDS.PROJECTS.MESSAGES.VALIDATION.DESCRIPTION</span>
+	                        <span>Please inform a valid description for the project</span>
 	                    </div>
 	                </div>
-		        </md-input-container>		  
+		        </md-input-container>
 		     </form>
 		</div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
-    	<md-button 
-    		class="md-accent" 
-    		ng-click="controller.confirmArchivation($event, controller.entity)" 
+    	<md-button
+    		class="md-accent"
+    		ng-click="controller.confirmArchivation($event, controller.entity)"
     		ng-if="controller.canArchive(controller.entity)">
-    			{{ 'CRUDS.PROJECTS.LABELS.BUTTONS.ARCHIVE' | translate }}
+    			Archive
     	</md-button>
-    	<md-button 
-    		class="md-accent" 
-    		ng-click="controller.activate($event, controller.entity)" 
+    	<md-button
+    		class="md-accent"
+    		ng-click="controller.activate($event, controller.entity)"
     		ng-if="controller.canActivate(controller.entity)">
-    			{{ 'CRUDS.PROJECTS.LABELS.BUTTONS.ACTIVATE' | translate }}
+    			Activate
     	</md-button>
-		<md-button 
-			class="md-accent" 
-			ng-click="controller.save(controller.entity)" 
+		<md-button
+			class="md-accent"
+			ng-click="controller.save(controller.entity)"
 			ng-disabled="projectForm.$invalid" >
-			{{ 'CRUDS.PROJECTS.LABELS.BUTTONS.SAVE' | translate }}
+			Save
 		</md-button>
-		<md-button 
-			class="md-primary" 
+		<md-button
+			class="md-primary"
 			ng-click="controller.closeDialog()" >
-			{{ 'CRUDS.PROJECTS.LABELS.BUTTONS.CANCEL' | translate }}
+			Cancel
 		</md-button>
     </md-dialog-actions>
 </md-dialog>

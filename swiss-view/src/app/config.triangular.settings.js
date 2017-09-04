@@ -9,13 +9,13 @@
     function translateConfig(triSettingsProvider, triRouteProvider) {
         var now = new Date();
         // set app name & logo (used in loader, sidemenu, footer, login pages, etc)
-        triSettingsProvider.setName('Vikings');
-        triSettingsProvider.setCopyright('&copy;' + now.getFullYear() + ' Vikings.tech');
+        triSettingsProvider.setName('VS Consulting');
+        triSettingsProvider.setCopyright('&copy;' + now.getFullYear() + ' VS Consulting');
         triSettingsProvider.setLogo('assets/images/logo.png');
         // set current version of app (shown in footer)
         triSettingsProvider.setVersion('1.0.0');
         // set the document title that appears on the browser tab
-        triRouteProvider.setTitle('Vikings');
+        triRouteProvider.setTitle('VS Consulting');
         triRouteProvider.setSeparator('|');
     }
 })();

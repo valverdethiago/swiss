@@ -8,9 +8,6 @@
 	</parent>
 	<artifactId>swiss-web</artifactId>
 	<packaging>war</packaging>
-	<properties>
-		<app.name>crawler</app.name>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>br.com.vsconsulting</groupId>
