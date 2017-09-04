@@ -31,7 +31,6 @@
         	projectController.pageRequest.onlyActives = true;
         	projectController.find();
         	$scope.$watch('pc.pageRequest.searchTerm', function(newValue, oldValue) {
-        		console.log(newValue);
         		if(util.isUndefinedOrNull(newValue)) {
         			return;
         		}
@@ -73,29 +72,29 @@
         }
 
         function open(event, entity) {
-        	util.showMessage($mdToast, $translate.instant('CRUDS.PROJECTS.MESSAGES.NOT_IMPLEMENTED'));
+        	util.showMessage($mdToast, 'Not implemented yet');
         }
 
         function save(entity) {
             projectService.save(entity)
         	.success(function(result) {
-            	util.showMessage($mdToast, $translate.instant('CRUDS.PROJECTS.MESSAGES.SUCCESS.SAVE'));
+            	util.showMessage($mdToast, 'Project saved successfully.');
             	closeDialog();
                 find();
         	})
         	.error(function (error) {
-            	util.showMessage($mdToast, $translate.instant('CRUDS.PROJECTS.MESSAGES.ERROR'));
+            	util.showMessage($mdToast, 'An error has occurred. Try again later.');
         	});
         };
 
         function confirmArchivation(event, entity) {
             var confirm = $mdDialog.confirm()
-                  .title($translate.instant('CRUDS.PROJECTS.MESSAGES.CONFIRMATION.ARCHIVE'))
-                  .textContent($translate.instant('CRUDS.PROJECTS.MESSAGES.CONFIRMATION.ARCHIVE_EXP'))
-                  .ariaLabel($translate.instant('CRUDS.PROJECTS.DIALOG.TITLE.CONFIRMATION'))
+                  .title('Project archived successfully.')
+                  .textContent('It can be reactivated later.')
+                  .ariaLabel('Confirmation')
                   .targetEvent(event)
-                  .ok($translate.instant('CRUDS.PROJECTS.LABELS.BUTTONS.OK'))
-                  .cancel($translate.instant('CRUDS.PROJECTS.LABELS.BUTTONS.CANCEL'));
+                  .ok('Ok')
+                  .cancel('Cancel');
             $mdDialog.show(confirm).then(function() {
             	projectController.archive(entity);
             }, function() {
@@ -106,12 +105,12 @@
         function archive(entity) {
             projectService.archive(entity)
         	.success(function(result) {
-            	util.showMessage($mdToast, $translate.instant('CRUDS.PROJECTS.MESSAGES.SUCCESS.ARCHIVE'));
+            	util.showMessage($mdToast, 'Project archived successfully.');
             	closeDialog();
                 projectController.find();
         	})
         	.error(function (error) {
-            	util.showMessage($mdToast, $translate.instant('CRUDS.PROJECTS.MESSAGES.ERROR') );
+            	util.showMessage($mdToast, 'An error has occurred. Try again later.' );
         	});
         };
 
@@ -132,12 +131,12 @@
         function activate(event, entity) {
             projectService.activate(entity)
         	.success(function(result) {
-            	util.showMessage($mdToast, $translate.instant('CRUDS.PROJECTS.MESSAGES.SUCCESS.ACTIVATE'));
+            	util.showMessage($mdToast, 'Project activated successfully.');
             	closeDialog();
                 find();
         	})
         	.error(function (error) {
-            	util.showMessage($mdToast, $translate.instant('CRUDS.PROJECTS.MESSAGES.ERROR') );
+            	util.showMessage($mdToast, 'An error has occurred. Try again later.' );
         	});
         };
 

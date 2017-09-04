@@ -5,7 +5,10 @@
         .module('app', [
             'triangular',
             'ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
-            'ui.router', 'pascalprecht.translate', 'LocalStorageModule', 'googlechart', 'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular', 'uiGmapgoogle-maps', 'hljs', 'md.data.table', angularDragula(angular), 'ngFileUpload',
+            'ui.router', 'pascalprecht.translate', 'LocalStorageModule', 'googlechart',
+            'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular',
+            'uiGmapgoogle-maps', 'hljs', 'md.data.table', angularDragula(angular),
+            'ngFileUpload', 'angularUtils.directives.dirPagination',
             // 'seed-module'
             // uncomment above to activate the example seed module
             'ngMaterial', 'ngMessages',
