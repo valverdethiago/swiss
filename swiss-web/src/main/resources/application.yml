@@ -1,0 +1,20 @@
+app:
+  profile: @app.profile@
+
+server:
+  contextPath: /@app.name@
+
+spring-boot-application: @app.name@
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+spring:
+  resources:
+    chain:
+      enabled: true
+  cache: 
+    type: NONE
+
+

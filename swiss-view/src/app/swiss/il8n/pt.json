@@ -1,0 +1,53 @@
+{	
+	"CRUDS": {
+		"PROJECTS" : {
+			"DIALOG" : {
+				"TITLE" : {
+					"INSERT" : "Novo Project",
+					"UPDATE" : "Editar Project",
+					"CONFIRMATION" : "Confirmation"
+				}
+			},
+			"LABELS" : {
+				"FIELDS" : {
+					"TITLE" : "Título",
+					"SUMMARY" : "Sumário",
+					"DESCRIPTION" : "Descrição",
+					"SEARCH" : "Pesquisar...",
+					"ONLY_ACTIVES" : "Mostrar apenas projetos ativos"
+				},
+				"BUTTONS" : {
+					"ARCHIVE" : "Archive",
+					"CANCEL" : "Cancelar",
+					"EDIT" : "Editar", 
+					"NEW" : "Novo",
+					"OK" : "Ok", 
+					"OPEN" : "Abrir",
+					"ACTIVATE" : "Ativar", 
+					"SAVE" : "Salvar"
+				}					
+			},
+			"MESSAGES" : {
+				"NO_PROJECTS" : "Meio vazio por aqui? Clique no link abaixo para criar um novo projeto",
+				"NEW_PROJECT" : "Criar novo projeto",
+				"NOT_IMPLEMENTED" : "Ainda não implementado", 
+				"ERROR" : "Ocorreu um erro. Tente novamente mais tarde.", 
+				"SUCCESS" : {
+					"SAVE" : "Projeto salvo com sucesso.",
+					"ARCHIVE" : "Projeto arquivado com sucesso.",
+					"ACTIVATE" : "Projeto ativado com sucesso."
+				},
+				"CONFIRMATION" : {
+					"ARCHIVE" : "Confirma o arquivamento do projeto?", 
+					"ARCHIVE_EXP" : "Ele poderá ser reativado no futuro."
+				},
+				"VALIDATION" : {
+					"TITLE" : "Please inform a valid title for the project",
+					"SUMMARY" : "Please inform a valid summary for the project",
+					"DESCRIPTION" : "Please inform a valid description for the project",
+					"SEARCH_TERM_LENGTH" : "Please informa a term with 3 characters at least."
+				} 
+			}			
+		}				
+	}
+}

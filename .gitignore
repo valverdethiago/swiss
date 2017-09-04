@@ -1,0 +1,11 @@
+target
+bin
+node
+node_modules
+bower_components
+dist
+.tmp
+.metadata
+.classpath
+.settings
+.project

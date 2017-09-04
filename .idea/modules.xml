@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/swiss.iml" filepath="$PROJECT_DIR$/swiss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swiss-model/swiss-model.iml" filepath="$PROJECT_DIR$/swiss-model/swiss-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swiss-service/swiss-service.iml" filepath="$PROJECT_DIR$/swiss-service/swiss-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swiss-web/swiss-web.iml" filepath="$PROJECT_DIR$/swiss-web/swiss-web.iml" />
+    </modules>
+  </component>
+</project>
