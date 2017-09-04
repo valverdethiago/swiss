@@ -24,8 +24,9 @@
 
 
     /* @ngInject */
-    function webCrawlerModuleConfig($translatePartialLoaderProvider, $stateProvider, $httpProvider) {
+    function webCrawlerModuleConfig($translatePartialLoaderProvider, $stateProvider, $httpProvider, paginationTemplateProvider) {
         $httpProvider.interceptors.push(authInterceptor);
+        paginationTemplateProvider.setPath('app/util/new-pagination.tpl.html');
 
         $stateProvider
         .state('authentication', {
