@@ -39,7 +39,6 @@
         function find() {
             clientService.find(clientController.pageRequest)
         	.success(function(searchResult) {
-        		util.adjustSearchResultForGrid(searchResult, clientController.pageRequest);
         		clientController.searchResult = searchResult;
         	})
         	.error(function (error) {
@@ -47,9 +46,10 @@
         	});
         };
 
-        function onPageChange(newPageNumber) {
+        function onPageChange(newPageNumber, newPageSize) {
         	var pageRequest = clientController.pageRequest;
         	pageRequest.pageNumber = newPageNumber;
+        	pageRequest.pageSize = newPageSize;
         	clientController.pageRequest.offset = pageRequest.pageSize * (newPageNumber - 1);
             clientController.find();
         };

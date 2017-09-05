@@ -26,38 +26,66 @@
 	</md-content>
 
   	<md-content class="md-padding" layout-xs="column" layout="row" >
-  		<div flex="95" flex-xs="100" layout="column" ng-show="controller.searchResult.totalElements > 0">
-		  	<md-content class="md-padding" layout-xs="column" layout="row">
-		    	<div flex-xs flex-gt-xs="33" layout="column" ng-repeat="column in controller.searchResult.columns">
-			    	<md-card ng-repeat="client in column" >
-				   		<md-card-content>
-				       		<div class="content-padded">
-				           		<h2 class="md-title">{{ client.name }} {{ client.surname}}</h2>
-				           		<p>{{ client.email }}</p>
-				       		</div>
-				        	<md-divider></md-divider>
-				        	<div class="button-toolbar" layout="row" layout-align="end center">
-				            	<md-button class="md-primary" ng-click="controller.detail($event, client)">Edit</md-button>
-				        	</div>
-				   		</md-card-content>
-					</md-card>
-				</div>
-		  	</md-content>
-		  	<div ng-show="false">
-		  		<span
-		  			dir-paginate="reg in controller.searchResult.content|itemsPerPage:controller.pageRequest.pageSize"
-		  			total-items="controller.searchResult.totalElements"
-		  			current-page="controller.searchResult.number" />
-		  	</div>
-		    <dir-pagination-controls
-		    	max-size="2"
-		    	direction-links="true"
-		    	boundary-links="true"
-		    	total-items="controller.searchResult.totalElements"
-		    	current-page="controller.searchResult.number"
-		    	on-page-change="controller.onPageChange(newPageNumber)">
-		    </dir-pagination-controls>
-		</div>
+
+
+
+        <div content-layout="column" content-layout-align="center" layout-align="space-between" layout-margin>
+            <md-table-container>
+                <table md-table class="md-primary md-data-table">
+                    <thead md-head>
+                    <tr md-row>
+                        <th md-column width="50%" ><span>Name</span></th>
+                        <th md-column width="30%" ><span>Surname</span></th>
+                        <th md-column width="15%" ><span>Email</span></th>
+                        <th md-column width="5%" name="Editar"></th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr md-row
+                            ng-repeat="client in controller.searchResult.content">
+                            <td
+                                md-cell>
+                                {{::client.name}}
+                            </td>
+                            <td
+                                md-cell>
+                                {{::client.surname}}
+                            </td>
+                            <td
+                                md-cell>
+                                {{::client.email}}
+                            </td>
+                            <td
+                                md-cell>
+                                <div layout="row" layout-align="end">
+                                    <a href ng-click="controller.detail(client, $event)" >
+                                        <md-button class="md-icon-button" aria-label="Editar" style="margin: 0px;">
+                                            <md-icon md-font-icon="zmdi zmdi-edit"></md-icon>
+                                            <md-tooltip>Editar</md-tooltip>
+                                        </md-button>
+                                    </a>
+                                    <a href ng-click="controller.confirmDelete(client, $event)" >
+                                        <md-button class="md-icon-button" aria-label="Deletar" style="margin: 0px;"	>
+                                            <md-icon md-font-icon="zmdi zmdi-delete"></md-icon>
+                                            <md-tooltip>Deletar</md-tooltip>
+                                        </md-button>
+                                    </a>
+                                </div>
+                            <td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+            <md-table-pagination
+                md-limit="controller.pageRequest.pageSize" md-page-select md-page="controller.searchResult.number"
+                md-total="{{controller.searchResult.totalElements}}"  md-on-paginate="controller.onPageChange" >
+            </md-table-pagination>
+        </div>
+
+
+
+
 	</md-content>
   	<md-content
   		class="md-padding"
