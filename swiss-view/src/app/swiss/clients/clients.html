@@ -1,0 +1,73 @@
+<div ng-controller="ClientController as controller" ng-cloak ng-init="controller.init()">
+  	<md-content class="md-padding" layout-xs="column" layout="row" >
+			<form name="searchForm" novalidate flex="100" layout="row" layout-align="center center" >
+	  			<div flex="10" flex-xs="100" layout="column" >
+				    <md-button
+				    	ng-click="controller.createNew($event)"
+				    	class="md-fab md-accent md-fab-top-left"
+				    	aria-label="New">
+				    	<md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+				    	<md-tooltip>New</md-tooltip>
+					</md-button>
+				</div>
+	    		<md-input-container  class="md-block" flex="60">
+			    	<label>Search...</label>
+			    	<input ng-minlength="3" name="searchTerm"
+			    		ng-model="controller.pageRequest.searchTerm"
+			    		ng-model-options="{ updateOn: 'default', debounce: { 'default': 1000 } }"
+                        ng-disabled="controller.searchResult.totalElements <= 0"/>
+			    	<div ng-messages="searchForm.searchTerm.$error">
+	                    <div ng-message when="minlength">
+	                        <span>Please inform a term with 3 characters at least.</span>
+	                    </div>
+	                </div>
+			    </md-input-container>
+			</form>
+	</md-content>
+
+  	<md-content class="md-padding" layout-xs="column" layout="row" >
+  		<div flex="95" flex-xs="100" layout="column" ng-show="controller.searchResult.totalElements > 0">
+		  	<md-content class="md-padding" layout-xs="column" layout="row">
+		    	<div flex-xs flex-gt-xs="33" layout="column" ng-repeat="column in controller.searchResult.columns">
+			    	<md-card ng-repeat="client in column" >
+				   		<md-card-content>
+				       		<div class="content-padded">
+				           		<h2 class="md-title">{{ client.name }} {{ client.surname}}</h2>
+				           		<p>{{ client.email }}</p>
+				       		</div>
+				        	<md-divider></md-divider>
+				        	<div class="button-toolbar" layout="row" layout-align="end center">
+				            	<md-button class="md-primary" ng-click="controller.detail($event, client)">Edit</md-button>
+				        	</div>
+				   		</md-card-content>
+					</md-card>
+				</div>
+		  	</md-content>
+		  	<div ng-show="false">
+		  		<span
+		  			dir-paginate="reg in controller.searchResult.content|itemsPerPage:controller.pageRequest.pageSize"
+		  			total-items="controller.searchResult.totalElements"
+		  			current-page="controller.searchResult.number" />
+		  	</div>
+		    <dir-pagination-controls
+		    	max-size="2"
+		    	direction-links="true"
+		    	boundary-links="true"
+		    	total-items="controller.searchResult.totalElements"
+		    	current-page="controller.searchResult.number"
+		    	on-page-change="controller.onPageChange(newPageNumber)">
+		    </dir-pagination-controls>
+		</div>
+	</md-content>
+  	<md-content
+  		class="md-padding"
+  		ng-show="controller.searchResult.totalElements <= 0"
+  		layout="column"
+  		layout-align="center center"
+  		flex="100" flex-xs="100" >
+  	  	<p flex="100" flex-xs="100" layout="row" layout-align="center center" ng-show="controller.searchResult.totalElements <= 0">
+            No clients in the database. Please add one.
+  	  	</p>
+  	</md-content>
+
+</div>

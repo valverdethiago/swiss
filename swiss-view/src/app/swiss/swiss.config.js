@@ -62,6 +62,20 @@
             controller: 'ProjectController',
             controllerAs: 'projectController'
         });
+
+        $stateProvider
+        .state('clients', {
+            parent : 'triangular',
+            data: {
+                layout: {
+                    sideMenuSize: 'off'
+                }
+            },
+            url: '/clients',
+            templateUrl: 'app/swiss/clients/clients.html',
+            controller: 'ClientController',
+            controllerAs: 'clientController'
+        });
     };
 
     /** @ngInject */

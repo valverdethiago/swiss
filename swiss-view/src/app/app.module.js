@@ -14,7 +14,8 @@
             'ngMaterial', 'ngMessages',
             'app.translate',
             'ngStorage',
-            'swiss-module'
+            'swiss-module',
+            'ds.clock'
 
         ])
         // create a constant for languages so they can be added to both triangular & translate

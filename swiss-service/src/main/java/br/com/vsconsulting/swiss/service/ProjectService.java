@@ -21,11 +21,11 @@ public class ProjectService {
 	private ProjectRepository repository;
 
 	public Project load(String id) {
-		return this.getRepository().findOne(id);
+		return this.repository.findOne(id);
 	}
 	
 	public Project save(Project project) {
-		return this.getRepository().save(project);
+		return this.repository.save(project);
 	}
 	
 	public Page<Project> search(ProjectSearchTo searchTo) {
@@ -33,17 +33,16 @@ public class ProjectService {
 			return null;
 		}		
 		if(searchTo.getSearchTerm() == null) {
-			// TODO [valverde.thiago] Retirar essa camanga daqui. Query da pau com termos nulos
 			searchTo.setSearchTerm("");
 		}
 		if(searchTo.getSort() == null) {
 			searchTo.setSort(new Sort(new Order(Direction.ASC, "title")));
 		}
-		return this.getRepository().search(searchTo.getSearchTerm(), searchTo.isOnlyActives(), searchTo);
+		return this.repository.search(searchTo.getSearchTerm(), searchTo.isOnlyActives(), searchTo);
 	}
 
 	public Iterable<Project> listAll() {
-		return this.getRepository().findAll();
+		return this.repository.findAll();
 	}
 
 	public Project archive(Project project) {
@@ -60,10 +59,6 @@ public class ProjectService {
 		}
 		project.setArchivationDate(null);
 		return this.save(project);
-	}
-	
-	protected ProjectRepository getRepository() {
-		return repository;
 	}
 	
 }

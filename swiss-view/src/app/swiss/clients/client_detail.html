@@ -1,0 +1,76 @@
+<md-dialog ng-cloak  flex="70" flex-sm="70">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>
+        	<span ng-show="util.isUndefinedOrNull(controller.entity.id)"> New Client </span>
+        	<span ng-show="!util.isUndefinedOrNull(controller.entity.id)"> Edit Client </span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="controller.closeDialog()">
+		   <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+		<div class="md-dialog-content">
+			<form name="clientForm" novalidate >
+                <div layout="row" flex="100">
+                    <md-input-container  class="md-block" flex="40">
+                        <label>Name</label>
+                        <input ng-model="controller.entity.name" name="name" md-maxlength="30" required />
+                        <div ng-messages="clientForm.name.$error">
+                            <div ng-message when="required">
+                                <span>Please inform a valid name for the client"</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="60">
+                        <label>Surname</label>
+                        <input ng-model="controller.entity.surname" name="Surname" md-maxlength="150" md-select-on-focus  required ></input>
+                        <div ng-messages="clientForm.surname.$error">
+                            <div ng-message when="required">
+                                <span>Please inform a valid surname for the client</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="column" flex="100">
+                    <md-input-container class="md-block" flex="100">
+                        <label>Email</label>
+                        <input ng-model="controller.entity.email" name="Email" md-maxlength="150" rows="5" md-select-on-focus  required ></input>
+                        <div ng-messages="clientForm.email.$error">
+                            <div ng-message when="required">
+                                <span>Please inform a valid email for the client</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+		     </form>
+		</div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+    	<md-button
+    		class="md-accent"
+    		ng-click="controller.confirmArchivation($event, controller.entity)"
+    		ng-if="controller.canArchive(controller.entity)">
+    			Archive
+    	</md-button>
+    	<md-button
+    		class="md-accent"
+    		ng-click="controller.activate($event, controller.entity)"
+    		ng-if="controller.canActivate(controller.entity)">
+    			Activate
+    	</md-button>
+		<md-button
+			class="md-accent"
+			ng-click="controller.save(controller.entity)"
+			ng-disabled="clientForm.$invalid" >
+			Save
+		</md-button>
+		<md-button
+			class="md-primary"
+			ng-click="controller.closeDialog()" >
+			Cancel
+		</md-button>
+    </md-dialog-actions>
+</md-dialog>
