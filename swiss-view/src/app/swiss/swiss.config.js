@@ -89,12 +89,15 @@
     			return config;
     		},
 		    'responseError' : function(rejection) {
-			    if (rejection.status == 401 || rejection.status == 403) {
+			    if (rejection.status == 401) {
 			    	if (rejection.config.url == 'rest/security/login') {
 			    		return $q.reject(rejection);
 				   	}
 	            	$localStorage.$reset();
 				    $location.url('/login');
+			    }
+			    else if(rejection.status == 403) {
+				    $location.url('/404');
 			    }
 			    return $q.reject(rejection);
 		    }
