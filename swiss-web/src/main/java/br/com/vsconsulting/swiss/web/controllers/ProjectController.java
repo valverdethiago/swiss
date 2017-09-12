@@ -1,8 +1,6 @@
 package br.com.vsconsulting.swiss.web.controllers;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
+import br.com.vsconsulting.swiss.model.entities.Project;
 import br.com.vsconsulting.swiss.service.ProjectService;
 import br.com.vsconsulting.swiss.to.ProjectSearchTo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.vsconsulting.swiss.model.entities.Project;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("/rest/project")
@@ -48,8 +47,7 @@ public class ProjectController {
 	@RequestMapping(value = "/find", method = POST, consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE }, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Page<Project> find(@RequestBody ProjectSearchTo pageable) {
-		Page<Project> page = service.search(pageable);
-		return page;
+		return service.search(pageable);
 	}
 
 	@RequestMapping(value = "/list", method = GET)
